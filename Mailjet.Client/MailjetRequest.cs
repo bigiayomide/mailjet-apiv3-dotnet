@@ -55,12 +55,14 @@ namespace Mailjet.Client
 
         public override string ToString()
         {
-            dynamic jObject = new JsonObject();
-            jObject.Resource = JsonSerializer.SerializeToNode(Resource);
-            jObject.ResourceId = ResourceId != null ? ResourceId.Id : null;
-            jObject.ActionID = ActionId.HasValue ? ActionId.Value.ToString() : null;
-            jObject.Filters = JsonSerializer.SerializeToNode(Filters);
-            jObject.Body = Body;
+            var jObject = new JsonObject
+            {
+                { "Resource", JsonSerializer.SerializeToNode(Resource) },
+                { "ResourceId", ResourceId?.Id },
+                { "ActionID", ActionId?.ToString() },
+                { "Filters", JsonSerializer.SerializeToNode(Filters) },
+                { "Body", Body }
+            };
 
             return jObject.ToString();
         }

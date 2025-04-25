@@ -1,11 +1,11 @@
+using System;
+using System.Net;
+using System.Text.Json.Nodes;
 using Mailjet.Client;
 using Mailjet.Client.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RichardSzalay.MockHttp;
-using System;
-using System.Net;
-using System.Text.Json.Nodes;
-using sms = Mailjet.Client.Resources.SMS;
+using Sms = Mailjet.Client.Resources.SMS;
 
 namespace Mailjet.Tests
 {
@@ -133,10 +133,10 @@ namespace Mailjet.Tests
 
             MailjetRequest request = new MailjetRequest
             {
-                Resource = sms.Count.Resource
+                Resource = Sms.Count.Resource
             }
-            .Filter(sms.Count.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString())
-            .Filter(sms.Count.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString());
+            .Filter(Sms.Count.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString())
+            .Filter(Sms.Count.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString());
 
 
             MailjetResponse response = client.GetAsync(request).Result;
@@ -178,10 +178,10 @@ namespace Mailjet.Tests
 
             MailjetRequest request = new MailjetRequest
             {
-                Resource = sms.Export.Resource
+                Resource = Sms.Export.Resource
             }
-            .Property(sms.Export.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())
-            .Property(sms.Export.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + offset);
+            .Property(Sms.Export.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())
+            .Property(Sms.Export.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + offset);
 
 
             MailjetResponse response = client.PostAsync(request).Result;
@@ -207,10 +207,10 @@ namespace Mailjet.Tests
 
             MailjetRequest request = new MailjetRequest
             {
-                Resource = sms.SMS.Resource
+                Resource = Sms.SMS.Resource
             }
-            .Filter(sms.SMS.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString())
-            .Filter(sms.SMS.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString());
+            .Filter(Sms.SMS.FromTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString())
+            .Filter(Sms.SMS.ToTS, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString());
 
             MailjetResponse response = client.GetAsync(request).Result;
 
