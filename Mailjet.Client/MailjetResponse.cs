@@ -112,7 +112,7 @@ namespace Mailjet.Client
             T result;
             if (!TryGetValue(key, out result))
             {
-                throw new Exception(string.Format("No entry found for key: {0}", key));
+                throw new Exception($"No entry found for key: {key}");
             }
 
             return result;

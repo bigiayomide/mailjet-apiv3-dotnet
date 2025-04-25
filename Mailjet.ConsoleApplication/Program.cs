@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace Mailjet.ConsoleApplication
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             RunAsync().Wait();
         }
 
-        static async Task RunAsync()
+        private static async Task RunAsync()
         {
             //MailjetClientHandler clientHandler = new MailjetClientHandler()
             //{
@@ -36,14 +36,14 @@ namespace Mailjet.ConsoleApplication
 
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine(string.Format("Total: {0}, Count: {1}\n", response.GetTotal(), response.GetCount()));
+                Console.WriteLine($"Total: {response.GetTotal()}, Count: {response.GetCount()}\n");
                 Console.WriteLine(response.GetData());
             }
             else
             {
-                Console.WriteLine(string.Format("StatusCode: {0}\n", response.StatusCode));
-                Console.WriteLine(string.Format("ErrorInfo: {0}\n", response.GetErrorInfo()));
-                Console.WriteLine(string.Format("ErrorMessage: {0}\n", response.GetErrorMessage()));
+                Console.WriteLine($"StatusCode: {response.StatusCode}\n");
+                Console.WriteLine($"ErrorInfo: {response.GetErrorInfo()}\n");
+                Console.WriteLine($"ErrorMessage: {response.GetErrorMessage()}\n");
             }
 
             Console.ReadLine();

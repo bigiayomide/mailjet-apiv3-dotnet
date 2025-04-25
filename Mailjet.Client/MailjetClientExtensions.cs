@@ -55,7 +55,7 @@ namespace Mailjet.Client
                 throw new ArgumentNullException(nameof(apiSecret));
 
             // Set basic authentification
-            var byteArray = Encoding.UTF8.GetBytes(string.Format("{0}:{1}", apiKey, apiSecret));
+            var byteArray = Encoding.UTF8.GetBytes($"{apiKey}:{apiSecret}");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
         }
     }

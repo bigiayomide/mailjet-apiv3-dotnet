@@ -19,8 +19,8 @@ namespace Mailjet.Tests.Integration
             _client = new MailjetClient(Environment.GetEnvironmentVariable("MJ_APIKEY_PUBLIC"),
                 Environment.GetEnvironmentVariable("MJ_APIKEY_PRIVATE"));
 
-            _contactName = string.Format("contact_name_{0}", Guid.NewGuid());
-            _contactEmail = string.Format("{0}@mailjet.com", _contactName);
+            _contactName = $"contact_name_{Guid.NewGuid()}";
+            _contactEmail = $"{_contactName}@mailjet.com";
         }
 
         [TestMethod]
